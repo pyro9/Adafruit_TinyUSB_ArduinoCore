@@ -960,8 +960,8 @@ bool usbd_edpt_xfer(uint8_t rhport, uint8_t ep_addr, uint8_t * buffer, uint16_t 
   uint8_t const epnum = tu_edpt_number(ep_addr);
   uint8_t const dir   = tu_edpt_dir(ep_addr);
 
-  TU_VERIFY( dcd_edpt_xfer(rhport, ep_addr, buffer, total_bytes) );
   _usbd_dev.ep_status[epnum][dir].busy = true;
+  TU_VERIFY( dcd_edpt_xfer(rhport, ep_addr, buffer, total_bytes) );
 
   TU_LOG2("  XFER Endpoint: 0x%02X, Bytes: %d\r\n", ep_addr, total_bytes);
 
